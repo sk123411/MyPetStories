@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.skcool.mypetstories.fragments.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.skcool.mypetstories.fragments.SignUpFragment"
+        android:label="Sign up"
+        tools:layout="@layout/fragment_sign_up" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.skcool.mypetstories.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/imageUploadFragment"
+        android:name="com.skcool.mypetstories.fragments.ImageUploadFragment"
+        android:label="Upload Picture"
+        tools:layout="@layout/fragment_image_upload" />
+</navigation>

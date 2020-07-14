@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="loginViewModel"
+            type="com.skcool.mypetstories.viewmodel.LoginFragmentViewModel" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.LoginFragment">
+
+        <TextView
+            android:id="@+id/MypetText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center_horizontal"
+            android:text="@string/hello_blank_fragment"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rec_edit"
+            android:ems="10"
+            android:text="@={loginViewModel.inputPassword}"
+
+            android:hint="@string/password"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            app:layout_constraintStart_toStartOf="@+id/editEmail"
+            app:layout_constraintTop_toBottomOf="@+id/editEmail" />
+
+        <EditText
+            android:id="@+id/editEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="72dp"
+            android:background="@drawable/rec_edit"
+            android:ems="10"
+            android:gravity="center_vertical"
+            android:hint="@string/email"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:text="@={loginViewModel.inputEmail}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/MypetText" />
+
+        <Button
+            android:id="@+id/buttonSignup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="84dp"
+            android:layout_marginRight="84dp"
+            android:background="@drawable/rec_button"
+            android:text="@string/sign_button_text"
+            android:textAllCaps="false"
+            app:layout_constraintBaseline_toBaselineOf="@+id/buttonLogin"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/buttonLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/rec_button"
+            android:text="@string/login_button_text"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toStartOf="@+id/buttonSignup"
+            app:layout_constraintHorizontal_bias="0.84"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editPassword" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

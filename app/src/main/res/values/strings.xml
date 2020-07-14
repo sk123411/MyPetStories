@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">MyPetStories</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">My Pet Stories</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login_button_text">Login</string>
+    <string name="sign_button_text">Sign up</string>
+    <string name="bio">Your short bio with your pet</string>
+    <string name="name">Full name</string>
+    <string name="pet_name">Pet name</string>
+    <string name="image_text">Your image</string>
+    <string name="pet_image_text">Pet image</string>
+    <string name="done">Done</string>
+    <string name="whats_happening">what\'s happening</string>
+</resources>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.ImageUploadFragment">
+
+
+        <TextView
+            android:id="@+id/mypetText2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center_horizontal"
+            android:text="@string/hello_blank_fragment"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/uploadImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:src="@drawable/eclipse_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mypetText2" />
+
+        <ImageView
+            android:id="@+id/uploadPetImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:src="@drawable/eclipse_image"
+            app:layout_constraintStart_toStartOf="@+id/uploadImage"
+            app:layout_constraintTop_toBottomOf="@+id/uploadImage" />
+
+        <Button
+            android:id="@+id/buttonDone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/rec_button"
+            android:text="@string/done"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/uploadPetImage" />
+
+        <TextView
+            android:id="@+id/imageText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/image_text"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/uploadImage"
+            app:layout_constraintEnd_toEndOf="@+id/uploadImage"
+            app:layout_constraintStart_toStartOf="@+id/uploadImage"
+            app:layout_constraintTop_toTopOf="@+id/uploadImage"
+            app:layout_constraintVertical_bias="0.497" />
+
+        <TextView
+            android:id="@+id/imageText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="88dp"
+            android:text="@string/pet_image_text"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/uploadPetImage"
+            app:layout_constraintStart_toStartOf="@+id/uploadPetImage"
+            app:layout_constraintTop_toTopOf="@+id/uploadPetImage" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
