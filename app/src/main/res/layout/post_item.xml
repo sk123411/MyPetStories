@@ -53,7 +53,7 @@
                 android:id="@+id/comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toLeftOf="@+id/commentText"
+                android:layout_centerHorizontal="true"
                 android:src="@drawable/ic_outline_comment_24">
 
             </ImageView>
@@ -64,6 +64,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_toLeftOf="@+id/share"
+                android:layout_toRightOf="@id/comment"
                 android:text="commednt">
 
             </TextView>

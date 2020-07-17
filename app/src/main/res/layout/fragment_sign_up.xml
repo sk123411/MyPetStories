@@ -46,7 +46,7 @@
                 android:hint="@string/pet_name"
                 android:inputType="textPersonName"
                 android:padding="10dp"
-                android:text="@{user.petName}" />
+                 />
 
             <EditText
                 android:id="@+id/editSignBio"
@@ -60,7 +60,7 @@
                 android:hint="@string/bio"
                 android:inputType="textPersonName"
                 android:padding="10dp"
-                android:text="@{user.bio}" />
+                 />
 
             <EditText
                 android:id="@+id/editSignPass"
@@ -87,7 +87,7 @@
                 android:hint="@string/name"
                 android:inputType="textPersonName"
                 android:padding="10dp"
-                android:text="@{user.name}" />
+                 />
 
             <Button
                 android:id="@+id/buttonSignSignup"

@@ -15,6 +15,8 @@ import com.skcool.mypetstories.R
 import com.skcool.mypetstories.databinding.FragmentSignUpBinding
 import com.skcool.mypetstories.model.User
 import com.skcool.mypetstories.repository.FirebaseRepository
+import com.skcool.mypetstories.utils.Common
+import io.paperdb.Paper
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 
 class SignUpFragment : Fragment() {
@@ -36,9 +38,11 @@ class SignUpFragment : Fragment() {
 
         //  (requireActivity() as MainActivity).title = "Sign up"
         repository = FirebaseRepository()
+        val paper = Paper.init(context)
         val usersReference = repository.getReference("Users")
         binding.buttonSignSignup.setOnClickListener {
             Toast.makeText(context,"success",Toast.LENGTH_SHORT).show()
+
 
 
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(
@@ -47,13 +51,17 @@ class SignUpFragment : Fragment() {
 
             ).addOnSuccessListener {
 
-                val user = User(editSignEmail.text.toString(),editSignName.text.toString(),editSignUpPet.text.toString(),
-                editSignBio.text.toString())
-                usersReference.child(editSignEmail.text.toString()).setValue(user).addOnSuccessListener {
-                    Toast.makeText(context,"success",Toast.LENGTH_SHORT).show()
-                    val bundle = bundleOf("userEmail" to editSignEmail.text.toString())
+                val user  = User(editSignEmail.text.toString().trim(),editSignName.text.toString(),editSignUpPet.text.toString(),
+                editSignBio.text.toString(),repository.getUid())
+                 val email:String = editSignEmail.text.toString()
+                Common.user = user;
+                Paper.book().write(Common.USER_UID_SAVED_KEY,Common.user)
 
+                usersReference.child(repository.getUid()).setValue(user).addOnSuccessListener {
+//                    Toast.makeText(context,"success",Toast.LENGTH_SHORT).show()
+                    val bundle = bundleOf("userEmail" to editSignEmail.text.toString())
                     findNavController().navigate(R.id.imageUploadFragment,bundle)
+
                 }
             }
 

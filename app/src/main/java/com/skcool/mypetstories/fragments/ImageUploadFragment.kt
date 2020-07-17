@@ -10,11 +10,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.tasks.Continuation
 import com.google.firebase.storage.UploadTask
 import com.skcool.mypetstories.R
 import com.skcool.mypetstories.databinding.FragmentImageUploadBinding
 import com.skcool.mypetstories.repository.FirebaseRepository
+import com.skcool.mypetstories.utils.Common
 
 class ImageUploadFragment : Fragment() {
 
@@ -58,8 +60,8 @@ class ImageUploadFragment : Fragment() {
         binding.buttonDone.setOnClickListener {
             if (userImageUri != null && userPetImageUri != null) {
 
-                val repo = repository.getStorageReference("profile_images").child(userEmail!!)
-                val repoPet = repository.getStorageReference("pet_images").child("${userEmail!!}pet")
+                val repo = repository.getStorageReference("profile_images").child(Common.user!!.email)
+                val repoPet = repository.getStorageReference("pet_images").child("${Common.user!!}pet")
 
                 val uploadUserTask = repo.putFile(userImageUri!!)
                 val uploadPetTask = repoPet.putFile(userPetImageUri!!)
@@ -75,7 +77,7 @@ class ImageUploadFragment : Fragment() {
                     repo.downloadUrl
                 }.addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        downloadUserImageUrl = task.result.toString()
+                        userImageUri = Uri.parse(task.result.toString())
 
                         uploadPetTask.continueWithTask { task ->
                             if (!task.isSuccessful) {
@@ -86,9 +88,10 @@ class ImageUploadFragment : Fragment() {
                             repoPet.downloadUrl
                         }.addOnCompleteListener { task ->
                             if (task.isSuccessful) {
-                                downloadUserPetImageUrl = task.result.toString()
+                                userPetImageUri = Uri.parse(task.result.toString())
                                 Toast.makeText(context, "success", Toast.LENGTH_SHORT).show()
-                                updateUserWithImage(downloadUserImageUrl,downloadUserPetImageUrl)
+                                updateUserWithImage(userImageUri.toString(),
+                                    userPetImageUri.toString())
 
                             } else {
                                 // Handle failures
@@ -114,9 +117,10 @@ class ImageUploadFragment : Fragment() {
 
         val map = mapOf<String,String>("profile_image" to downloadUserImageUrl,"pet_image" to downloadUserPetImageUrl)
 
-        val database = repository.getReference("Users").child(userEmail!!).updateChildren(map)
+        val database = repository.getReference("Users").child(Common.user!!.uid).updateChildren(map)
             .addOnCompleteListener {
-                startActivity(Intent(requireContext(),HomeFragment::class.java))
+                findNavController().navigate(R.id.homeFragment)
+
             }
 
 
@@ -144,6 +148,9 @@ class ImageUploadFragment : Fragment() {
 
         binding.uploadImage.setImageURI(userImageUri)
         binding.uploadPetImage.setImageURI(userPetImageUri)
+
+
+
 
     }
 
